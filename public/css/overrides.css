@@ -1,0 +1,497 @@
+.wf-force-outline-none[tabindex="-1"]:focus {
+    outline: none;
+}
+
+[jo-figma-effect] {
+    position: relative
+}
+
+[jo-figma-effect]:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    border-radius: 50px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform .1s
+}
+
+[jo-figma-effect].selected:after {
+    transform: scaleX(1)
+}
+
+[jo-figma-element=canvas]:has([contentEditable=true]) {
+    cursor: inherit
+}
+
+[jo-figma-element=container] [contentEditable=true] {
+    outline: none
+}
+
+[jo-figma-element=container] [contentEditable=true] h2:hover,
+[jo-figma-element=container] [contentEditable=true] .body-x-large:hover {
+    outline: 1px dotted #78abf7;
+    cursor: text
+}
+
+.panel>.button {
+    flex: 1
+}
+
+body,
+label {
+    cursor: url(/images/678589e333ae18b23ab9be2c_Cursor_.png) 17 15, auto
+}
+
+a,
+.w-button {
+    cursor: url(/images/67858cfb954f9377ec20df1a_Pointer.png) 3 33, auto
+}
+
+.--playing[jo-marquee-element=marquee] {
+    --marquee-out: translateX(-50%);
+    animation: marquee var(--marquee-speed, 16s) linear infinite
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0)
+    }
+
+    to {
+        transform: var(--marquee-out)
+    }
+}
+
+.w-nav:before,
+.w-nav:after {
+    content: none
+}
+
+.nav-element {
+    transition: all .1s ease
+}
+
+.article_article :first-child,
+.article_article figure+p {
+    margin-top: 0
+}
+
+.is-grow-wrap {
+    display: grid
+}
+
+.is-grow-wrap:before {
+    content: attr(data-placeholder-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden
+}
+
+.is-grow-wrap:after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden
+}
+
+.is-grow-wrap>textarea {
+    resize: none;
+    overflow: hidden
+}
+
+.is-grow-wrap>textarea,
+.is-grow-wrap:after,
+.is-grow-wrap:before {
+    padding: 8px 12px;
+    font: inherit;
+    grid-area: 1 / 1 / 2 / 2
+}
+
+:root {
+    --color-1: var(--colors--surface);
+    --color-2: var(--colors--surface);
+    --color-3: var(--colors--surface)
+}
+
+.wf-design-mode .body.debug {
+    --color-1: rgba(255, 0, 0, .4);
+    --color-2: rgba(0, 255, 0, .4);
+    --color-3: rgba(0, 0, 255, .4)
+}
+
+.content {
+    padding: calc(var(--gutter) / 2)
+}
+
+.panel {
+    position: relative;
+    padding: calc(var(--gutter) * .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.panel:before,
+.panel:after,
+.content:after {
+    content: " ";
+    display: block;
+    position: sticky;
+    left: 0;
+    right: 0;
+    margin-left: calc(var(--gutter) * -.5);
+    margin-right: calc(var(--gutter) * -.5);
+    pointer-events: none
+}
+
+.content:after {
+    display: none !important;
+    bottom: 0;
+    margin-top: calc(var(--gutter) * -1.5);
+    margin-bottom: calc(var(--gutter) * -.5);
+    border: var(--gutter) solid var(--color-1);
+    border-top: none;
+    grid-column: span 12;
+    height: var(--gutter)
+}
+
+.panel:before {
+    z-index: 5;
+    top: calc(var(--gutter) * -.5 + var(--nav-height));
+    margin-top: calc(var(--gutter) * -.5);
+    margin-bottom: calc(var(--border-radius) * -1);
+    border-radius: calc(var(--border-radius) * 2) calc(var(--border-radius) * 2) 0 0;
+    border: calc(var(--gutter) * .5) solid var(--color-3);
+    border-bottom: none;
+    height: var(--border-radius)
+}
+
+.panel:after {
+    bottom: calc(var(--gutter) * .5);
+    margin-top: calc(var(--border-radius) * -1);
+    margin-bottom: calc(var(--gutter) * -.5);
+    border-radius: 0 0 calc(var(--border-radius) * 2) calc(var(--border-radius) * 2);
+    border: calc(var(--gutter) * .5) solid var(--color-3);
+    border-top: none;
+    height: var(--border-radius)
+}
+
+.sidebar-content .panel:after,
+.sidebar-content .panel:before {
+    display: none
+}
+
+.sidebar-content .panel {
+    padding: 0
+}
+
+[jo-rollinghover-element=button] .jo-rollinghover-text {
+    position: relative;
+    flex: 1;
+    --rollinghover-padding: 16px
+}
+
+[jo-rollinghover-element=button] .jo-rollinghover-text>div:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translate(100%) translate(var(--rollinghover-padding, 0))
+}
+
+[jo-rollinghover-element=button]:hover .jo-rollinghover-text {
+    transition: none
+}
+
+:root {
+    --nav-height: calc(5rem + 2 * var(--gutter))
+}
+
+@media (max-width: 991px) {
+    :root {
+        --nav-height: calc(3.75rem + 2 * var(--gutter));
+        --gutter: 12px;
+        --panel-padding: 12px
+    }
+}
+
+.circle-colored path {
+    fill: currentColor
+}
+
+/* Override or Ensure Grid Layout */
+.content {
+    display: grid !important;
+    grid-template-columns: repeat(12, 1fr) !important;
+    width: 100%;
+    max-width: 100%;
+}
+
+.main {
+    /* Ensure main takes 10 columns */
+    /* The ID selector in original CSS might already do this, but we reinforce it/fallback */
+    grid-column: span 10;
+}
+
+.projects-sidebar-container {
+    grid-column: span 2;
+    position: sticky;
+    top: var(--nav-height);
+    height: calc(100vh - var(--nav-height));
+    overflow: hidden;
+    /* IMPORTANT: stop outer scroll */
+    display: flex;
+    /* allow inner scroll area */
+    flex-direction: column;
+    padding-top: var(--gutter);
+}
+
+/* If you want no scrollbar in the right column like Jokula */
+.projects_scroll_container {
+    scrollbar-width: none;
+    /* Firefox */
+    margin-top: 0 !important;
+}
+
+.projects_scroll_container::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+/* Make ScrollableProjects fill the sidebar height */
+.section_projects_scrollable {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* This is the ONLY element that should scroll */
+.projects_scroll_container {
+    flex: 1 1 auto;
+    min-height: 0;
+    /* IMPORTANT: enables scrolling inside flex */
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 16px;
+    padding-right: 8px;
+}
+
+
+.projects-sidebar-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Logo Hover Effect */
+.nav-element.logo:hover .nav-logo-image,
+.nav-element.logo.w--current:hover .nav-logo-image {
+    filter: invert(1);
+    transition: filter 0.1s ease;
+}
+
+
+/* Ensure the container clips the overflow if necessary, though overlapping might be desired */
+.nav-element.logo {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-element.logo img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.nav-element.logo .logoimg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+}
+
+.content:after {
+    border-color: var(--colors--surface);
+}
+
+
+/* Reduce gap between panels and sections */
+.panel+.panel {
+    margin-top: 0 !important;
+}
+
+.main>div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.section_article-teaser {
+    margin-bottom: 0 !important;
+}
+
+/* Ensure footer connects symmetrically */
+.footer {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* === SAFE pill look: round the big outer frame only, don't change grid sizing === */
+
+.page-wrapper {
+    border-radius: 28px !important;
+    /* outer pill corners */
+    overflow: hidden !important;
+    /* clip corners cleanly */
+    background: #dde3ea !important;
+    /* Jokula surface behind cards */
+}
+
+/* Keep the actual content grid untouched */
+.content,
+.main {
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+}
+
+/* Optional: add a tiny inset without touching grid layout */
+.page-wrapper {
+    margin: 12px !important;
+}
+
+.page-wrapper {
+    margin: 0 !important;
+    padding: 12px !important;
+    /* ONLY if page-wrapper is NOT a grid container */
+}
+
+/* Remove the 1px dark separators between pill blocks */
+.nav-element,
+.footer-element,
+.section,
+.w-inline-block,
+.w-nav-menu a,
+.panel,
+.card,
+.block,
+.w-nav-menu .nav-element {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Many Webflow pills use an inset 1px border. Kill it. */
+.nav-element,
+.footer-element {
+    border: 0 !important;
+}
+
+/* Make the surface behind the cards match, so gaps don't look like dark lines */
+html,
+body {
+    background: var(--colors--surface) !important;
+}
+
+.page-wrapper,
+.content {
+    background: var(--colors--surface) !important;
+}
+
+/* Remove "slice" dividers inside the right scroll projects list */
+.projects_scroll_container *::before,
+.projects_scroll_container *::after {
+    border: 0 !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* If the image is inside a Webflow embed/figure, ensure it isn't being clipped */
+.projects_scroll_container img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+}
+
+/* =========================
+   Jokula-like spacing system
+   ========================= */
+:root {
+    --gutter: 16px;
+    /* outside page padding */
+    --gap: 16px;
+    /* space between cards/sections */
+    --radius: 20px;
+    /* rounded corners */
+}
+
+/* Keep page padding consistent */
+.page-wrapper {
+    padding: var(--gutter) !important;
+    box-sizing: border-box;
+}
+
+/* Consistent spacing between major blocks */
+.content,
+.main {
+    gap: var(--gap) !important;
+}
+
+/* Consistent spacing between sections (safe: margin only) */
+.section {
+    margin-bottom: var(--gap) !important;
+}
+
+/* Consistent rounding everywhere (don’t change sizing) */
+.section,
+.nav-element,
+.footer-element,
+.w-inline-block,
+.w-nav,
+.w-nav-menu,
+.w-button {
+    border-radius: var(--radius) !important;
+}
+
+/* Right sidebar: consistent stack spacing */
+.projects_scroll_container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap) !important;
+}
+
+/* Make image cards feel evenly framed */
+.projects_scroll_container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius) !important;
+}
+
+/* --- Logo: prevent cropping inside the nav pill --- */
+.nav-element.logo {
+    align-items: center;
+    /* nav-element default is flex-end */
+}
+
+.nav-element.logo .w-embed {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-element.logo img.nav-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* IMPORTANT: no cropping */
+    display: block;
+}

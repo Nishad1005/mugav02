@@ -1,0 +1,7 @@
+/* app/globals.css */
+/* Keep this file minimal. Let Jokula/Webflow CSS control the look. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
