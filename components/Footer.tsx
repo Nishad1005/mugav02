@@ -35,17 +35,18 @@ export default function Footer() {
                 </div>
             </Link></div>
             <div id="w-node-fb06246d-2997-d81d-a4fb-747de590c112-e590c109" className="footer-panel is-address">
-                <div className="footer_header">Reykjavík, Iceland</div>
+                <div className="footer_header">Bangalore, India</div>
                 <div className="footer_address">
-                    <div>Ármúli 40<br />108, Reykjavík</div>
-                    <div>jokula@jokula.com</div>
-                    <div>(+354) 519 8830</div>
+                    <div>MJ Lifestyle Astro<br />Huskur, Bangalore</div>
+                    <div>info@dbbsgroup.com</div>
+                    <div>(+91) 988 041 1661</div>
                 </div>
             </div>
             <div id="w-node-fb06246d-2997-d81d-a4fb-747de590c11e-e590c109" className="footer-panel is-address">
-                <div className="footer_header">Denver, U.S.A.</div>
+                <div className="footer_header">Assam, India</div>
                 <div className="footer_address">
-                    <div>jokula@jokula.com</div>
+                    <div>info@dbbsgroup.com</div>
+                    <div>(+91) 988 041 1661</div>
                 </div>
             </div><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c12a-e590c109" href="#" target="_blank"
                 className="footer-social w-inline-block"><img src="/fonts/68bb484883c3a878c13406a8_LinkedIn.svg" loading="lazy"
