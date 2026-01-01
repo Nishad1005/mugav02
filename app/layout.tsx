@@ -7,12 +7,12 @@ import LegacyScriptReloader from "@/components/LegacyScriptReloader";
 import NavbarFooterObserver from "@/components/NavbarFooterObserver";
 
 export const metadata: Metadata = {
-  title: "Jokula - Design Agency",
+  title: "Mugaworld",
   description: "We craft brands, interfaces and experiences that people love",
 };
 
 export default function RootLayout({
-  
+
   children,
 }: {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-wf-domain="www.jokula.com"
+      data-wf-domain="www.mugaworld.com"
       data-wf-page="6599c0ad1df5a8f2566aa279"
       data-wf-site="6599c0ad1df5a8f2566aa26f"
       className="w-mod-js w-mod-ix"
@@ -38,7 +38,7 @@ export default function RootLayout({
           name="description"
           content="We craft brands, interfaces and experiences that people love"
         />
-        <meta property="og:title" content="Jokula - Design Agency" />
+        <meta property="og:title" content="Mugaworld" />
         <meta
           property="og:description"
           content="We craft brands, interfaces and experiences that people love"
@@ -48,7 +48,7 @@ export default function RootLayout({
           content="images/68cc251cab460060c54eb9ae_Opengraph%20jokula.jpg"
         />
         <meta property="og:type" content="website" />
-        <meta property="twitter:title" content="Jokula - Design Agency" />
+        <meta property="twitter:title" content="Mugaworld" />
         <meta
           property="twitter:description"
           content="We craft brands, interfaces and experiences that people love"
