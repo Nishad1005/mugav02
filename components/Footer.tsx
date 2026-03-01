@@ -48,13 +48,15 @@ export default function Footer() {
                     <div>info@dbbsgroup.com</div>
                     <div>(+91) 988 041 1661</div>
                 </div>
-            </div><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c12a-e590c109" href="#" target="_blank"
+            </div><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c12a-e590c109" href="#"
+                target="_blank" rel="noopener noreferrer"
                 className="footer-social w-inline-block"><img src="/fonts/68bb484883c3a878c13406a8_LinkedIn.svg" loading="lazy"
-                    alt="" /></a><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c12d-e590c109" href="#"
-                        target="_blank" className="footer-social w-inline-block"><img src="/fonts/68bb4858a6c4ac923babbe7f_Instagram.svg"
+                    alt="" /></a><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c12d-e590c109" href="https://www.instagram.com/mugaworld/"
+                        target="_blank" rel="noopener noreferrer" className="footer-social w-inline-block"><img src="/fonts/68bb4858a6c4ac923babbe7f_Instagram.svg"
                             loading="lazy" alt="" /></a><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c130-e590c109" href="#"
                                 className="footer-social w-inline-block"><img src="/fonts/68bb483375d06013ec5fb8ac_Twitter.svg" loading="lazy"
-                                    alt="" /></a><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c133-e590c109" href="jokula.is" target="_blank"
+                                    alt="" /></a><a id="w-node-fb06246d-2997-d81d-a4fb-747de590c133-e590c109" href="https://www.facebook.com/profile.php?id=61581272228071"
+                                        target="_blank" rel="noopener noreferrer"
                                         className="footer-social w-inline-block"><img src="/fonts/68bb486d8f9ff5d1546b007c_Facebook.svg" loading="lazy"
                                             alt="" /></a>
             <div id="w-node-fb06246d-2997-d81d-a4fb-747de590c136-e590c109" data-w-id="fb06246d-2997-d81d-a4fb-747de590c136"

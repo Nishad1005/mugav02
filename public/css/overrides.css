@@ -230,9 +230,7 @@ a,
 }
 
 .main {
-    /* Ensure main takes 10 columns */
-    /* The ID selector in original CSS might already do this, but we reinforce it/fallback */
-    grid-column: span 10;
+    grid-column: 1 / -1;
 }
 
 .projects-sidebar-container {
@@ -245,7 +243,7 @@ a,
     display: flex;
     /* allow inner scroll area */
     flex-direction: column;
-    padding-top: var(--gutter);
+    padding-top: 0;
 }
 
 /* If you want no scrollbar in the right column like Jokula */
@@ -268,15 +266,13 @@ a,
     min-height: 0;
 }
 
-/* This is the ONLY element that should scroll */
+/* Follow page scroll (Jokula-style), do not create separate inner scroll */
 .projects_scroll_container {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     min-height: 0;
-    /* IMPORTANT: enables scrolling inside flex */
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-top: 16px;
-    padding-right: 8px;
+    overflow: visible;
+    margin-top: 0;
+    padding-right: 0;
 }
 
 
@@ -345,7 +341,7 @@ a,
 /* === SAFE pill look: round the big outer frame only, don't change grid sizing === */
 
 .page-wrapper {
-    border-radius: 28px !important;
+    border-radius: var(--site-container-radius) !important;
     /* outer pill corners */
     overflow: hidden !important;
     /* clip corners cleanly */
@@ -369,7 +365,7 @@ a,
 
 .page-wrapper {
     margin: 0 !important;
-    padding: 12px !important;
+    padding: var(--site-gap) !important;
     /* ONLY if page-wrapper is NOT a grid container */
 }
 
@@ -420,15 +416,25 @@ body {
     object-fit: cover;
 }
 
+/* Make project cards occupy the full sidebar lane width */
+.projects_scroll_container .panel,
+.projects_scroll_container .w-inline-block,
+.projects_scroll_container .work-image {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 /* =========================
    Jokula-like spacing system
    ========================= */
 :root {
-    --gutter: 16px;
+    --site-gap: 16px;
+    --gutter: var(--site-gap);
     /* outside page padding */
-    --gap: 16px;
+    --gap: var(--site-gap);
     /* space between cards/sections */
-    --radius: 20px;
+    --site-container-radius: var(--border-radius);
+    --radius: var(--site-container-radius);
     /* rounded corners */
 }
 
@@ -494,4 +500,368 @@ body {
     object-fit: contain;
     /* IMPORTANT: no cropping */
     display: block;
+}
+
+/* Header logo: responsive fill without cropping */
+.navbar .nav-element.logo {
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    border-radius: var(--site-container-radius) !important;
+    overflow: hidden;
+}
+
+.navbar .nav-element.logo .logoimg {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 0 0 16px;
+    box-sizing: border-box;
+}
+
+.navbar .nav-element.logo .nav-logo-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    transform: translateY(8px) scale(1.14) !important;
+    transform-origin: left center !important;
+    display: block;
+}
+
+.navbar .nav-element.logo .nav-logo-svg {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .navbar .nav-element.logo .logoimg {
+        padding: 0 0 0 10px;
+    }
+
+    .navbar .nav-element.logo .nav-logo-image {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        transform: translateY(7px) scale(1.06) !important;
+        transform-origin: left center !important;
+    }
+}
+
+/* =========================================================
+   Jokula Layout Calibration (Site-wide)
+   ========================================================= */
+:root {
+    --jokula-gutter: var(--site-gap);
+    --jokula-pill-radius: var(--site-container-radius);
+    --jokula-panel-radius: var(--site-container-radius);
+}
+
+.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    grid-auto-flow: column !important;
+}
+
+.navbar,
+.content,
+.footer {
+    padding-left: var(--jokula-gutter) !important;
+    padding-right: var(--jokula-gutter) !important;
+}
+
+.navbar,
+.nav_desktop,
+.content,
+.main,
+.footer {
+    gap: var(--jokula-gutter) !important;
+}
+
+.nav-element,
+.footer-element,
+.panel,
+.card,
+.button,
+.w-button,
+.w-inline-block {
+    border-radius: var(--jokula-panel-radius) !important;
+}
+
+.footer-panel,
+.footer-social,
+.footer_address,
+.article_card,
+.project-card {
+    border-radius: var(--jokula-panel-radius) !important;
+}
+
+.nav-element:not(.hello) {
+    height: 5rem !important;
+    padding: 16px !important;
+    align-items: flex-end !important;
+}
+
+.navbar .nav-element.logo {
+    border-radius: var(--border-radius) !important;
+}
+
+.navbar .nav-element,
+.navbar .nav-element-menu {
+    border-radius: var(--border-radius) !important;
+}
+
+.content {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.main {
+    grid-column: 1 / -1 !important;
+}
+
+.projects-sidebar-container {
+    grid-column: span 2 !important;
+}
+
+/* Home page only: keep Jokula 10 + 2 layout */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 {
+    grid-column: span 10 !important;
+}
+
+.section {
+    margin-bottom: var(--jokula-gutter) !important;
+}
+
+.panel {
+    padding: calc(var(--jokula-gutter) * 0.5) !important;
+}
+
+.footer {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+@media (max-width: 991px) {
+    :root {
+        --site-gap: 12px;
+        --jokula-gutter: var(--site-gap);
+        --jokula-panel-radius: 16px;
+    }
+
+    .sidebar-content {
+        transform: none !important;
+    }
+
+    .main,
+    .projects-sidebar-container {
+        grid-column: 1 / -1 !important;
+    }
+
+    .projects-sidebar-container {
+        position: static !important;
+        height: auto !important;
+    }
+
+    .nav-element:not(.hello) {
+        height: 3.75rem !important;
+        padding: 12px !important;
+    }
+}
+
+/* SAY HALLO expanded footer state (Jokula-like) */
+.nav-element.hello.is-expanded {
+    background-color: var(--colors--white) !important;
+    color: var(--colors--black) !important;
+}
+
+.nav-element.hello.is-expanded:hover {
+    background-color: var(--colors--white) !important;
+    color: var(--colors--black) !important;
+}
+
+.nav-element.hello.is-expanded .shapeicon.hello {
+    color: var(--colors--red) !important;
+}
+
+/* Navbar base colors controlled via CSS (no inline theme styles) */
+.navbar .nav-element:not(.hello),
+.navbar .nav-element-menu {
+    background-color: var(--colors--white) !important;
+    color: var(--colors--black) !important;
+}
+
+.navbar .nav-element.hello {
+    background-color: var(--colors--black) !important;
+    color: var(--colors--white) !important;
+}
+
+/* Footer-zone theme state (Jokula-like dark header + dark pills) */
+html.footer-theme-active,
+html.footer-theme-active body {
+    background: var(--colors--surface) !important;
+}
+
+html.footer-theme-active .navbar {
+    background-color: var(--colors--surface) !important;
+}
+
+html.footer-theme-active .nav-element:not(.hello),
+html.footer-theme-active .nav-element-menu {
+    background-color: var(--colors--white_8) !important;
+    color: var(--colors--white) !important;
+}
+
+html.footer-theme-active .nav-element.logo {
+    background-color: var(--colors--white_8) !important;
+}
+
+html.footer-theme-active .nav-element.logo .nav-logo-image {
+    filter: brightness(0) invert(1) !important;
+}
+
+html.footer-theme-active .nav-element:not(.hello):hover,
+html.footer-theme-active .nav-element-menu:hover {
+    background-color: var(--colors--white) !important;
+    color: var(--colors--black) !important;
+}
+
+/* Sticky navbar fix for inner pages: allow vertical sticky behavior */
+.page-wrapper {
+    overflow: visible !important;
+}
+
+@supports (overflow: clip) {
+    .page-wrapper {
+        overflow-x: clip !important;
+        overflow-y: visible !important;
+    }
+}
+
+.navbar {
+    z-index: 50 !important;
+}
+
+/* Smoother footer-zone color transitions */
+html,
+body,
+.page-wrapper,
+.content,
+.navbar {
+    transition: background-color 420ms cubic-bezier(.22, .61, .36, 1) !important;
+}
+
+.nav-element,
+.nav-element-menu,
+.nav-element.logo,
+.nav-element.logo .nav-logo-image {
+    transition:
+        background-color 420ms cubic-bezier(.22, .61, .36, 1),
+        color 420ms cubic-bezier(.22, .61, .36, 1),
+        filter 420ms cubic-bezier(.22, .61, .36, 1) !important;
+}
+
+/* Preserve native growing-nav motion for SAY HALLO */
+.nav-element.hello {
+    transition:
+        height .85s cubic-bezier(.19, 1, .22, 1),
+        background-color 420ms cubic-bezier(.22, .61, .36, 1),
+        color 420ms cubic-bezier(.22, .61, .36, 1) !important;
+    will-change: height;
+}
+
+/* Ensure sidebar project cards use full lane width (no inset panel padding) */
+.projects_scroll_container .panel {
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.projects_scroll_container .w-inline-block,
+.projects_scroll_container .work-image {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Remove Jokula sidebar-content insets for home projects lane */
+.projects-sidebar-container>.sidebar-content {
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+}
+
+/* =========================================================
+   Final Sitewide Spacing Normalization
+   ========================================================= */
+
+/* Keep all primary layout containers on the same spacing rhythm */
+.navbar,
+.content,
+.main,
+.footer,
+.nav_desktop,
+.projects_home,
+.section_home-services,
+.section_aboutus,
+.section_clients {
+    gap: var(--site-gap) !important;
+}
+
+/* Top-level content flow: uniform vertical spacing between sections/cards */
+.main > *:not(.section_projects_scrollable):not(.projects_scroll_container) {
+    margin-bottom: var(--site-gap) !important;
+}
+
+.main > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Internal card spacing stays consistent everywhere */
+.panel,
+.footer-panel,
+.footer-social,
+.footer_address {
+    padding: calc(var(--site-gap) * 0.5) !important;
+}
+
+.projects_scroll_container .panel {
+    padding: 0 !important;
+}
+
+/* =========================================================
+   Homepage Rhythm (horizontal + vertical consistency)
+   ========================================================= */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 > * {
+    margin: 0 !important;
+}
+
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 > * + * {
+    margin-top: var(--site-gap) !important;
+}
+
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_hero,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_home-services,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_aboutus,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_clients,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_article-teaser,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-10,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-12,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-10.is-tablet-4 {
+    gap: var(--site-gap) !important;
+    grid-column-gap: var(--site-gap) !important;
+    grid-row-gap: var(--site-gap) !important;
 }

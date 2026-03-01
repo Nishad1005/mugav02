@@ -4,7 +4,6 @@ import React from "react";
 import "./globals.css";
 import Script from "next/script";
 import LegacyScriptReloader from "@/components/LegacyScriptReloader";
-import NavbarFooterObserver from "@/components/NavbarFooterObserver";
 
 export const metadata: Metadata = {
   title: "Mugaworld",
@@ -92,9 +91,7 @@ export default function RootLayout({
 
         {/* Your helper to reload Webflow / legacy scripts on route changes */}
         <LegacyScriptReloader />
-        <NavbarFooterObserver />
       </body>
     </html>
   );
 }
-

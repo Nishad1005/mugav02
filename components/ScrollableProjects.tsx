@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function ScrollableProjects() {
     return (
-        <div className="section_projects_scrollable">
+        <div className="section_projects_scrollable sidebar-content">
 
             <div className="projects_scroll_container"
             /* Hide scrollbar for cleaner look if desired, or keep default */
