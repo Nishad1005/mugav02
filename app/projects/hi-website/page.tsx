@@ -193,7 +193,7 @@ export default function HiWebsite() {
                                     <div className="quote_symbol">“</div>
                                 </div>
                                 <div className="quote_textauthor">
-                                    <div className="body-x-large">Jökulá played a pivotal role in developing a new web design system for the University of Iceland… They delivered innovative and elegant solutions that significantly enhanced the user experience and supported users in achieving their goals.</div>
+                                    <div className="body-x-large">MugaWorld played a pivotal role in developing a new web design system for the University of Iceland… They delivered innovative and elegant solutions that significantly enhanced the user experience and supported users in achieving their goals.</div>
                                     <div>The University of Iceland Web Team</div>
                                 </div>
                             </div>

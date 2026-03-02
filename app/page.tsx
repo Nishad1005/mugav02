@@ -10,7 +10,7 @@ import FromOurDesk from '@/components/FromOurDesk';
 
 export default function Home() {
   return (
-    <>
+    <div className="page-wrapper home-page">
       <div id="cursor-label" className="cursor_label">
         <div>Label</div>
       </div>
@@ -174,7 +174,7 @@ export default function Home() {
           <div className="section_clients">
             <OurFriends />
           </div>
-          <div className="panel"><Link href="/projects" className="breakbar w-inline-block">
+          <div className="panel home-breakbar-panel"><Link href="/projects" className="breakbar w-inline-block">
             <div jo-marquee-element="marquee" className="marquee --playing" style={{ '--marquee-out': 'translateX(-50%)' } as React.CSSProperties}>
               <div jo-marquee-element="inner" className="marquee_inner">
                 {/* ... Marquee inner content ... */}
@@ -194,7 +194,7 @@ export default function Home() {
         </div>
       </section>
       <Footer />
-    </>
+    </div>
   );
 }
 

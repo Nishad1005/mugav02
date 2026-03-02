@@ -36,7 +36,7 @@ export default function AboutUs() {
                         <div className="grid-12 is-hero-text">
                             <div id="w-node-_2e588308-7a99-86e1-c55e-2d59dcfa4085-185cc109" className="panel space-between">
                                 <div className="panel_content">
-                                    <h1 className="heading-main">We are Jökulá</h1>
+                                    <h1 className="heading-main">We are MugaWorld</h1>
                                     <div className="div-block-4">
                                         <div>[ˈjœːkʏːlau]</div>
                                     </div>
@@ -76,7 +76,7 @@ export default function AboutUs() {
                     <div className="section_about-statement">
                         <div id="w-node-b9d379a8-e3cb-857d-1ed8-bb6529c9c66b-185cc109" className="panel">
                             <div className="panel_content is-statement">
-                                <div className="body-x-large">At Jökulá, we love coming to work and designing bold, innovative ideas. However, our primary focus is always on creating an impactful experience through an exceptional user interface.</div>
+                                <div className="body-x-large">At MugaWorld, we love coming to work and designing bold, innovative ideas. However, our primary focus is always on creating an impactful experience through an exceptional user interface.</div>
                             </div>
                         </div>
                         <div id="w-node-b9b56fc0-9e55-cdb2-633a-80e40d7558f1-185cc109" className="panel">

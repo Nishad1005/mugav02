@@ -89,7 +89,7 @@ export default function ArticleLifeAndDeath() {
                                 </figure>
                                 <h2>UX Is Business-Critical</h2>
                                 <p>Great design isn’t decoration — it’s survival. If your users can’t complete their tasks, they leave. If they feel frustrated, they switch to competitors. UX is the difference between thriving and disappearing.</p>
-                                <p>That’s why we at Jökulá take UX seriously. We don’t just make things look good; we make them work, for real people, in real life — whether that life is about convenience or, in extreme cases, about safety.</p>
+                                <p>That’s why we at MugaWorld take UX seriously. We don’t just make things look good; we make them work, for real people, in real life — whether that life is about convenience or, in extreme cases, about safety.</p>
                                 <h2>Final Thoughts</h2>
                                 <p>User experience isn’t a “nice-to-have.” It’s the core of how your product interacts with the world. When done well, it can be invisible — smooth, seamless, even delightful. When done poorly, it’s glaring and, sometimes, dangerous.</p>
                                 <p>So yes, UX <em>is</em> a matter of life and death. At least, it’s a matter of whether your product lives or dies.</p>

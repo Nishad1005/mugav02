@@ -805,52 +805,44 @@ body,
 }
 
 /* =========================================================
-   Final Sitewide Spacing Normalization
+   Shared Grid + Homepage-Only Spacing System
    ========================================================= */
+:root {
+    --layout-grid-columns: repeat(12, minmax(0, 1fr));
+    --home-gap: var(--site-gap);
+}
 
-/* Keep all primary layout containers on the same spacing rhythm */
+/* Step 4: single shared 12-col source for header/content */
 .navbar,
-.content,
-.main,
-.footer,
-.nav_desktop,
-.projects_home,
-.section_home-services,
-.section_aboutus,
-.section_clients {
-    gap: var(--site-gap) !important;
+.content {
+    grid-template-columns: var(--layout-grid-columns) !important;
+    grid-auto-columns: minmax(0, 1fr) !important;
 }
 
-/* Top-level content flow: uniform vertical spacing between sections/cards */
-.main > *:not(.section_projects_scrollable):not(.projects_scroll_container) {
-    margin-bottom: var(--site-gap) !important;
+/* Keep frame gutters identical across top-level rows */
+.page-wrapper .navbar,
+.page-wrapper .content,
+.page-wrapper .footer {
+    padding-left: var(--site-gap) !important;
+    padding-right: var(--site-gap) !important;
 }
 
-.main > *:last-child {
-    margin-bottom: 0 !important;
+/* Keep homepage 10 + 2 structure explicit within shared 12-col grid */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 {
+    grid-column: 1 / span 10 !important;
 }
 
-/* Internal card spacing stays consistent everywhere */
-.panel,
-.footer-panel,
-.footer-social,
-.footer_address {
-    padding: calc(var(--site-gap) * 0.5) !important;
+.projects-sidebar-container {
+    grid-column: 11 / -1 !important;
 }
 
-.projects_scroll_container .panel {
-    padding: 0 !important;
-}
-
-/* =========================================================
-   Homepage Rhythm (horizontal + vertical consistency)
-   ========================================================= */
+/* Step 3: homepage-only rhythm (prevents sitewide spacing conflicts) */
 #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 > * {
     margin: 0 !important;
 }
 
 #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 > * + * {
-    margin-top: var(--site-gap) !important;
+    margin-top: var(--home-gap) !important;
 }
 
 #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_hero,
@@ -861,7 +853,399 @@ body,
 #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-10,
 #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-12,
 #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-10.is-tablet-4 {
-    gap: var(--site-gap) !important;
-    grid-column-gap: var(--site-gap) !important;
-    grid-row-gap: var(--site-gap) !important;
+    gap: var(--home-gap) !important;
+    grid-column-gap: var(--home-gap) !important;
+    grid-row-gap: var(--home-gap) !important;
+}
+
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .panel {
+    padding: calc(var(--home-gap) * 0.5) !important;
+}
+
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .projects_scroll_container .panel {
+    padding: 0 !important;
+}
+
+@media (max-width: 991px) {
+    #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279,
+    .projects-sidebar-container {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* =========================================================
+   Style Guide Tokens (Single Source of Truth)
+   Future edits: change values here first.
+   ========================================================= */
+:root {
+    /* Spacing */
+    --sg-gap: 16px;
+    --sg-card-padding: calc(var(--sg-gap) * 0.5);
+
+    /* Shape */
+    --sg-radius: var(--border-radius);
+
+    /* Grid */
+    --sg-grid-columns: repeat(12, minmax(0, 1fr));
+
+    /* Aliases used throughout project */
+    --site-gap: var(--sg-gap);
+    --home-gap: var(--sg-gap);
+    --layout-grid-columns: var(--sg-grid-columns);
+    --site-container-radius: var(--sg-radius);
+    --radius: var(--sg-radius);
+    --jokula-gutter: var(--sg-gap);
+    --jokula-pill-radius: var(--sg-radius);
+    --jokula-panel-radius: var(--sg-radius);
+}
+
+@media (max-width: 991px) {
+    :root {
+        --sg-gap: 12px;
+    }
+}
+
+/* =========================================================
+   Homepage Frame Alignment (Jokula-like)
+   Single horizontal gutter owner for exact row alignment.
+   ========================================================= */
+.page-wrapper.home-page {
+    padding-left: var(--site-gap) !important;
+    padding-right: var(--site-gap) !important;
+}
+
+.page-wrapper.home-page > .navbar,
+.page-wrapper.home-page > .content,
+.page-wrapper.home-page > .footer {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Align first visible body card edge with header pills */
+.page-wrapper.home-page .section_hero > .panel {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Match hero text inset with logo pill text inset */
+.page-wrapper.home-page .section_hero > .panel:first-child .panel_content {
+    padding-left: 16px !important;
+}
+
+/* Match "footer-like" homepage breakbar width to hero/body container width */
+.page-wrapper.home-page .home-breakbar-panel {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* =========================================================
+   Homepage Spacing Lock (review pass)
+   Applies only to homepage main node to avoid inner-page regressions.
+   ========================================================= */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--home-gap) !important;
+}
+
+/* Neutralize mixed legacy margins/paddings inside homepage flow */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 > * {
+    margin: 0 !important;
+}
+
+/* Keep all key homepage section wrappers on one rhythm */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_hero,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_home-services,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_aboutus,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_clients,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .section_article-teaser,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-10,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-12,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .grid-10.is-tablet-4 {
+    gap: var(--home-gap) !important;
+    grid-column-gap: var(--home-gap) !important;
+    grid-row-gap: var(--home-gap) !important;
+    margin: 0 !important;
+}
+
+/* Stable card/panel rhythm on homepage */
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .panel,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .footer-panel,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .footer-social,
+#w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .footer_address {
+    padding: var(--sg-card-padding) !important;
+}
+
+/* Preserve full-bleed image cards in projects lane */
+.projects_scroll_container .panel {
+    padding: 0 !important;
+}
+
+/* =========================================================
+   Surface Texture (Grey Theme Only)
+   ========================================================= */
+:root {
+    --surface-texture-image: url("/images/muga-surface-texture.png");
+}
+
+html:not(.footer-theme-active) body {
+    background-color: var(--colors--surface) !important;
+    background-image: var(--surface-texture-image) !important;
+    background-repeat: repeat !important;
+    background-size: 512px 512px !important;
+    background-position: 0 0 !important;
+}
+
+/* Apply the same texture to inner layout containers for a seamless full-page surface */
+html:not(.footer-theme-active) .page-wrapper,
+html:not(.footer-theme-active) .navbar,
+html:not(.footer-theme-active) .content,
+html:not(.footer-theme-active) .footer {
+    background-color: var(--colors--surface) !important;
+    background-image: var(--surface-texture-image) !important;
+    background-repeat: repeat !important;
+    background-size: 512px 512px !important;
+    background-position: 0 0 !important;
+}
+
+html.footer-theme-active body {
+    background-image: none !important;
+}
+
+html.footer-theme-active .page-wrapper,
+html.footer-theme-active .navbar,
+html.footer-theme-active .content,
+html.footer-theme-active .footer {
+    background-image: none !important;
+}
+
+/* Remove decorative "bracket" strokes around pills/cards sitewide */
+.panel::before,
+.panel::after,
+.content::after {
+    display: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* Remove Webflow mask overlays that create extra grey outline strokes */
+.masks,
+.main-mask,
+.sidebar-mask,
+.bottom-mask {
+    display: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* =========================================================
+   Sitewide Container Radius Consistency
+   Match all container corners to navbar pill radius.
+   ========================================================= */
+:root {
+    --global-pill-radius: var(--border-radius);
+}
+
+.panel,
+.project,
+.content,
+.main,
+.side,
+.section,
+.section_min-hero,
+.section_hero,
+.section_home-services,
+.section_aboutus,
+.section_clients,
+.section_article-teaser,
+.footer-panel,
+.footer-social,
+.footer_address,
+.footer-cta,
+.clients_customer,
+.clients_droparea,
+.card,
+.card_article_thumbnail,
+.card_text,
+.badge,
+.breakbar,
+.nav-element,
+.nav-element-menu {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+/* Keep media corners consistent with the same radius */
+.work-image,
+.hero_img,
+.image-2,
+.image-5,
+.card_article_image,
+.card_article_image-wrapper,
+.pattern-boxy-spiral,
+.pattern-boxy-spiral-unscaled {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+/* =========================================================
+   Homepage Corner Pass (Phase 1)
+   Ensure visible inner surfaces use the same pill radius.
+   ========================================================= */
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .panel {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .panel_content,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .breakbar,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .card,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .card_text,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .card_article_thumbnail,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .card_article_image-wrapper,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .pattern-checkered-minimizing,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .pattern-boxy-spiral,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .pattern-boxy-spiral-unscaled,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .clients_customer,
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .clients_droparea {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+/* Clip child backgrounds/patterns so panel corners never appear square */
+.home-page #w-node-_9dbd33b2-b873-2b43-ebae-04c0acdf84e1-566aa279 .panel:not(.side) {
+    overflow: hidden !important;
+}
+
+/* =========================================================
+   Page-by-page Corner Consistency Pass
+   Services, About, Articles, Contact, Projects
+   ========================================================= */
+.page-wrapper .section_min-hero,
+.page-wrapper .section_hero,
+.page-wrapper .section_services,
+.page-wrapper .section_about-statement,
+.page-wrapper .section_about-approach,
+.page-wrapper .section_about-staff_desktop,
+.page-wrapper .section_about-staff_mobile,
+.page-wrapper .section_about-testimonials,
+.page-wrapper .section_articles,
+.page-wrapper .section_contact,
+.page-wrapper .section_projects-header,
+.page-wrapper .services_row,
+.page-wrapper .grid-12.is-hero-text,
+.page-wrapper .grid-12.is-project-hero {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+.page-wrapper .panel,
+.page-wrapper .panel_content,
+.page-wrapper .breakbar,
+.page-wrapper .card,
+.page-wrapper .card_text,
+.page-wrapper .card_article_thumbnail,
+.page-wrapper .card_article_image-wrapper,
+.page-wrapper .card_staff,
+.page-wrapper .card_staff_image,
+.page-wrapper .card_staff_text,
+.page-wrapper .card_location,
+.page-wrapper .contact-img-wrapper,
+.page-wrapper .contact-img,
+.page-wrapper .clients_customer,
+.page-wrapper .clients_droparea,
+.page-wrapper .clients_droparea-guard,
+.page-wrapper .pill,
+.page-wrapper .badge,
+.page-wrapper .button,
+.page-wrapper .text-field,
+.page-wrapper .success-message,
+.page-wrapper .error-message {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+/* Pattern/media containers should follow the same corner geometry */
+.page-wrapper .pattern-swirl,
+.page-wrapper .pattern-wavy,
+.page-wrapper .pattern-spiral-stripes,
+.page-wrapper .pattern-serpentine-stripes,
+.page-wrapper .pattern-chevron-sideways,
+.page-wrapper .pattern-checkered-large,
+.page-wrapper .pattern-checkered-minimizing,
+.page-wrapper .pattern-boxy-spiral,
+.page-wrapper .pattern-boxy-spiral-unscaled,
+.page-wrapper .pattern-mario-cart,
+.page-wrapper .pattern-rounded-spiral,
+.page-wrapper .pattern-spiral-lightning-thick,
+.page-wrapper .pattern-spiral-lightning-thin,
+.page-wrapper .pattern-herringbone,
+.page-wrapper .work-image,
+.page-wrapper .hero_img,
+.page-wrapper .image-2,
+.page-wrapper .image-5 {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+/* Clip child backgrounds/images to rounded parent corners across non-home pages too */
+.page-wrapper .panel:not(.side),
+.page-wrapper .card,
+.page-wrapper .card_article_thumbnail,
+.page-wrapper .card_staff,
+.page-wrapper .card_location,
+.page-wrapper .contact-img-wrapper {
+    overflow: hidden !important;
+}
+
+/* About Us: staff list block corner fix */
+.page-wrapper .staff_list-wrapper,
+.page-wrapper .staff_list,
+.page-wrapper .staff_row_text {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+.page-wrapper .staff_list-wrapper,
+.page-wrapper .staff_list {
+    overflow: hidden !important;
+}
+
+/* Articles: thumbnail/pattern block corner fix (e.g. skull card) */
+.page-wrapper .collection-item-4,
+.page-wrapper .collection-item-6,
+.page-wrapper .card_article_thumbnail,
+.page-wrapper .card_article_thumbnail .pattern-spiral-lightning-thick,
+.page-wrapper .card_article_thumbnail .pattern-boxy-spiral,
+.page-wrapper .card_article_thumbnail .pattern-checkered-large,
+.page-wrapper .card_article_thumbnail .pattern-swirl,
+.page-wrapper .card_article_thumbnail .pattern-rounded-spiral,
+.page-wrapper .card_article_thumbnail .pattern-mario-cart,
+.page-wrapper .card_article_thumbnail .pattern-herringbone,
+.page-wrapper .card_article_thumbnail .pattern-wavy {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+.page-wrapper .collection-item-4,
+.page-wrapper .collection-item-6,
+.page-wrapper .card_article_thumbnail {
+    overflow: hidden !important;
+}
+
+/* Articles hero feature card (skull block) explicit corner fix */
+.page-wrapper .collection-item-6,
+.page-wrapper .collection-item-6 .grid-12.is-hero-text,
+.page-wrapper .collection-item-6 .panel,
+.page-wrapper .collection-item-6 .red,
+.page-wrapper .collection-item-6 .pattern-checkered-minimizing,
+.page-wrapper .collection-item-6 .pattern-spiral-lightning-thick,
+.page-wrapper .collection-item-6 .article_title-img {
+    border-radius: var(--global-pill-radius) !important;
+}
+
+.page-wrapper .collection-item-6,
+.page-wrapper .collection-item-6 .grid-12.is-hero-text,
+.page-wrapper .collection-item-6 .panel,
+.page-wrapper .collection-item-6 .red,
+.page-wrapper .collection-item-6 .pattern-checkered-minimizing,
+.page-wrapper .collection-item-6 .pattern-spiral-lightning-thick {
+    overflow: hidden !important;
 }
